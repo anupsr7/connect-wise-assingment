@@ -7,7 +7,7 @@ import { dummyJsondb } from "@/dummy-jsondb/api";
 import { useSelectedUser } from "../hooks/selectedUser";
 
 export default function ToDoList() {
-    const limit = 5;
+    const limit = 8;
     const todosInitialValue: TodosResp = {todos:[], total: 0, limit: 5, skip: 0};
 
     const [skip, setSkip] = useState(0);

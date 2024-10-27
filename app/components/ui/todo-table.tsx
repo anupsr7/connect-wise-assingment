@@ -7,7 +7,7 @@ const ToDoTable = ({ todosList, paginationNext, paginationPrev, limit, skip }: t
     return (
         <>
             <div className="mt-30">
-                <table className="table">
+                <table className="table table-bordered">
                     <thead>
                         <tr>
                             <th>Task ID</th>
@@ -39,14 +39,14 @@ const ToDoTable = ({ todosList, paginationNext, paginationPrev, limit, skip }: t
                     <div className="row">
                         <div className="row col-md-4"></div>
                         <div className="row col-md-1">
-                            <button disabled={skip === 0} onClick={() => paginationPrev()}>
+                            <button className="btn" disabled={skip === 0} onClick={() => paginationPrev()}>
                                 Previous
                             </button>
                         </div>
                         <div className="row col-md-2">
                             <div className="col-md-3">
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-md-6 page-info">
                                 <span> {Math.ceil((skip + limit)) / limit} of {Math.ceil(todosList.total / limit)}</span>
                             </div>
                             <div className="col-md-3">
@@ -54,7 +54,7 @@ const ToDoTable = ({ todosList, paginationNext, paginationPrev, limit, skip }: t
                             </div>
                         </div>
                         <div className="row col-md-1">
-                            <button disabled={(skip + limit) >= todosList.total} onClick={() => paginationNext()}>Next</button>
+                            <button className="btn" disabled={(skip + limit) >= todosList.total} onClick={() => paginationNext()}>Next</button>
                         </div>
                         <div className="row col-md-4"></div>
                     </div>
