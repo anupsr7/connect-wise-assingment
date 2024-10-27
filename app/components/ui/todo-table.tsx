@@ -1,11 +1,15 @@
 
 import { TodosResp } from "@/constant/constant";
 import Link from "next/link";
-type todoProps = { todosList: TodosResp, paginationNext: () => void, paginationPrev: () => void, limit: number, skip: number };
-const ToDoTable = ({ todosList, paginationNext, paginationPrev, limit, skip }: todoProps) => {
+import Loader from "./loader";
+type todoProps = { todosList: TodosResp, paginationNext: () => void, paginationPrev: () => void, limit: number, skip: number, loading:boolean };
+const ToDoTable = ({ todosList, paginationNext, paginationPrev, limit, skip, loading}: todoProps) => {
 
     return (
         <>
+            <div className="loader-background">
+                {loading ? (<Loader/>) : null}
+            </div>
             <div className="mt-30">
                 <table className="table table-bordered">
                     <thead>
@@ -39,7 +43,7 @@ const ToDoTable = ({ todosList, paginationNext, paginationPrev, limit, skip }: t
                     <div className="row">
                         <div className="row col-md-4"></div>
                         <div className="row col-md-1">
-                            <button className="btn" disabled={skip === 0} onClick={() => paginationPrev()}>
+                            <button className="btn" disabled={skip === 0 || loading} onClick={() => paginationPrev()}>
                                 Previous
                             </button>
                         </div>
@@ -54,7 +58,7 @@ const ToDoTable = ({ todosList, paginationNext, paginationPrev, limit, skip }: t
                             </div>
                         </div>
                         <div className="row col-md-1">
-                            <button className="btn" disabled={(skip + limit) >= todosList.total} onClick={() => paginationNext()}>Next</button>
+                            <button className="btn" disabled={(skip + limit) >= todosList.total || loading} onClick={() => paginationNext()}>Next</button>
                         </div>
                         <div className="row col-md-4"></div>
                     </div>

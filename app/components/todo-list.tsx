@@ -13,12 +13,16 @@ export default function ToDoList() {
     const [skip, setSkip] = useState(0);
     const [todos, setTodos] = useState(todosInitialValue);
     const { userId } = useSelectedUser();
+    const [loading, setLoading] = useState(true);
+
     const fetchTodos = async (limit: number, skip: number) => {
         setTodos(await dummyJsondb.todoTaskList.todolist(limit, skip));
+        setLoading(false);
     }
 
     const getUserTodo = async (userid: number,  limit: number, skip: number) => {
         setTodos(await dummyJsondb.todoTaskList.userTodolist(userid, limit, skip));
+        setLoading(false);
     }
 
     const paginationNext = () => {
@@ -30,11 +34,12 @@ export default function ToDoList() {
     }
 
     useEffect(() => {
+        setLoading(true);
         fetchTodos(limit, skip);
     }, [skip]);
 
     useEffect(() => {
-        console.log(userId)
+        setLoading(true);
         if(userId) {
             getUserTodo(userId, limit, skip);
         }else {
@@ -50,6 +55,7 @@ export default function ToDoList() {
             paginationPrev = {paginationPrev}
             limit = {limit}
             skip = {skip}
+            loading = {loading}
             />
          </Suspense>
     );
