@@ -28,7 +28,7 @@ const ToDoTable = ({ todosList, paginationNext, paginationPrev, limit, skip }: t
                                     <td>{user.todo}</td>
                                     <td>{user.completed ? "Yes" : "No"}</td>
                                     <td>
-                                        <Link href={`/user/${user.id}`} prefetch={false}>{user.id}</Link>
+                                        <Link href={`/user/${user.id}`} prefetch={false}>{user.userId}</Link>
                                     </td>
                                 </tr>
                             ))
