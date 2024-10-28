@@ -51,13 +51,13 @@ export default function SelectUser() {
     return (
         <>
             <div className="row col-md-12 mt-30">
-               <div className="row col-md-1"></div>
-                <div className="row col-md-3">
-                    <div className="row col-md-8"><input type="text"  placeholder="min 3 char to search..." value={searchVal} onChange={(e: React.ChangeEvent<HTMLInputElement>) => searchHandler(e)}/></div>
-                    <div className="row col-md-4">  <button className="btn-reset" onClick={() => resetHandler()} disabled={users.total === 0 && searchVal.length === 0} >Reset</button></div>
+               <div className="row col-md-2"></div>
+                <div className="row col-md-2">
+                    <div><input type="text"  placeholder="search user min 3 char" value={searchVal} onChange={(e: React.ChangeEvent<HTMLInputElement>) => searchHandler(e)}/></div>
                 </div>
                 <div className="row col-md-2 ml-10">
                     <select className="selectpicker" onChange={handleSelectChange} disabled={users.total === 0 } name="users" id="users">
+                        <option value="">Select User</option>
                         {users.total === 0 ? (
                             <option value="">No user</option>
                         ) : (
@@ -69,10 +69,13 @@ export default function SelectUser() {
                         )}
                     </select>
                 </div>
-                <div className="row col-md-2 ml-10">
+                <div className="row col-md-3 ml-10">
+                    <div className="row col-md-8">
                     <button className="btn" onClick={() => submitHandler()} disabled={users.total === 0 } >submit</button>
+                    </div>
+                    <div className="row col-md-4">  <button className="btn-reset" onClick={() => resetHandler()} disabled={users.total === 0 && searchVal.length === 0} >Reset</button></div>
                 </div>
-                <div className="row col-md-2"></div>
+                <div className="row col-md-1"></div>
             </div>
         </>
     )

@@ -53,11 +53,12 @@ a {
 
 .btn {
   text-decoration: none;
-  padding: 10px 20px !important;
   font-weight: 600 !important;
   background-color: #9EB356 !important;
   color: #000000 !important;
-  min-width: 100px
+  min-width: 100px !important;
+  min-width: 110px !important;
+  min-height: 30px !important;
 }
 
 thead tr th {
@@ -66,10 +67,11 @@ thead tr th {
 }
 
 input[type=text] {
-  background-color: white;
+  background-color: rgb(236, 229, 229);
   background-position: 10px 10px;
   background-repeat: no-repeat;
-  /* padding-left: 40px; */
+  min-height: 50px !important;
+  padding-left: 4px;
 }
 .page-info {
   margin-top: 10px !important;
@@ -80,9 +82,10 @@ input[type=text] {
   font-weight: 600 !important;
   background-color: #9EB356 !important;
   color: #000000 !important;
-  min-width: 50px !important;
+  min-width: 20px !important;
   margin-left: 10px !important;
   align-items: center;
+  min-height: 30px !important;
 }
 
 /* components/Loader.css */

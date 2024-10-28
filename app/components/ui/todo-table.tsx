@@ -42,7 +42,7 @@ const ToDoTable = ({ todosList, paginationNext, paginationPrev, limit, skip, loa
                 {todosList.total === 0 ? null : (
                     <div className="row">
                         <div className="row col-md-4"></div>
-                        <div className="row col-md-1">
+                        <div className="row col-md-2">
                             <button className="btn" disabled={skip === 0 || loading} onClick={() => paginationPrev()}>
                                 Previous
                             </button>
@@ -51,16 +51,15 @@ const ToDoTable = ({ todosList, paginationNext, paginationPrev, limit, skip, loa
                             <div className="col-md-3">
                             </div>
                             <div className="col-md-6 page-info">
-                                <span> {Math.ceil((skip + limit)) / limit} of {Math.ceil(todosList.total / limit)}</span>
+                                <span> { limit >= todosList.total ? 1 : (Math.ceil((skip + limit)) / limit)} of {Math.ceil(todosList.total / limit)}</span>
                             </div>
                             <div className="col-md-3">
 
                             </div>
                         </div>
-                        <div className="row col-md-1">
+                        <div className="row col-md-2">
                             <button className="btn" disabled={(skip + limit) >= todosList.total || loading} onClick={() => paginationNext()}>Next</button>
                         </div>
-                        <div className="row col-md-4"></div>
                     </div>
                 )}
 
